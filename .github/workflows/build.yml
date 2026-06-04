@@ -23,18 +23,18 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # 1. Configura o Ninja (gerenciador de build ultra-rápido que o Geode exige)
+    # 1. Configura o Ninja (gerenciador de build rápido)
     - name: Setup Ninja
       uses: aseprite/get-ninja-availability@main
 
-    # 2. Configura o compilador do Android (NDK) se a máquina atual for o Ubuntu
+    # 2. Configura o compilador do Android se a máquina for Linux (Ubuntu)
     - name: Setup Android NDK
       if: matrix.config.platform != 'win'
       uses: nado-sc/setup-android-ndk@v1
       with:
         ndk-version: r26b
 
-    # 3. Baixa e instala a CLI do Geode direto pelo instalador oficial deles via PowerShell/Bash
+    # 3. Baixa a CLI do Geode direto do script oficial deles
     - name: Install Geode CLI
       shell: bash
       run: |
@@ -46,11 +46,11 @@ jobs:
           echo "$HOME/.geode/bin" >> $GITHUB_PATH
         fi
 
-    # 4. Roda o CMake nativo passando a plataforma correta que a gente configurou!
+    # 4. Roda o CMake nativo usando o terminal, sem depender de actions de terceiros!
     - name: Configure and Build Mod
       shell: bash
       run: |
         export PATH="$HOME/.geode/bin:$PATH"
-        geode profile add --name gd_version "2.2081" # Registra a versão do GD no ambiente
+        geode profile add --name gd_version "2.2081"
         cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DGEODE_PLATFORM=${{ matrix.config.platform }}
         cmake --build build --config Release
