@@ -23,12 +23,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # CORREÇÃO DEFINITIVA: O nome real do repositório deles tem o "-cli" no final!
-    - name: Setup Geode CLI
-      uses: geode-sdk/setup-geode-cli@main
-
-    # Agora o ambiente vai ter o CLI e o CMake vai achar tudo!
+    # CORREÇÃO DEFINITIVA: Removemos o passo de setup que foi deletado do GitHub 
+    # E atualizamos a Action de Build para a '@v3', que faz o setup automático e aceita o parâmetro 'platform'!
     - name: Build Mod
-      uses: geode-sdk/build-geode-mod@main  
+      uses: geode-sdk/build-geode-mod@v3  
       with:
         platform: ${{ matrix.config.platform }}
