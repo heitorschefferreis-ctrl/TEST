@@ -9,13 +9,13 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
-          target: Win       # Mantém o target do Windows corrigido!
+          platform: win       # Mudado de target para platform (e deixado em minúsculo)
         - name: Android32
           os: ubuntu-latest
-          target: Android32
+          platform: android32 # Mudado de target para platform
         - name: Android64
           os: ubuntu-latest
-          target: Android64
+          platform: android64 # Mudado de target para platform
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -24,7 +24,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build Mod
-      # FIX: Voltamos para a @main que é a oficial documentada no repositório do Geode
       uses: geode-sdk/build-geode-mod@main  
       with:
-        target: ${{ matrix.config.target }}
+        # CORREÇÃO CRUCIAL: Trocado 'target:' por 'platform:' para bater com a nova CLI do Geode!
+        platform: ${{ matrix.config.platform }}
