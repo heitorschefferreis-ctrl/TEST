@@ -26,3 +26,5 @@ jobs:
       uses: geode-sdk/build-geode-mod@main
       with:
         target: ${{ matrix.config.target }}
+        # Isso força a action a exportar os caminhos corretos para o CMake
+        export-conditions: true
