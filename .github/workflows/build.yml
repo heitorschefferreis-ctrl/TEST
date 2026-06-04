@@ -9,13 +9,13 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
-          platform: win       # Mudado de target para platform (e deixado em minúsculo)
+          platform: win
         - name: Android32
           os: ubuntu-latest
-          platform: android32 # Mudado de target para platform
+          platform: android32
         - name: Android64
           os: ubuntu-latest
-          platform: android64 # Mudado de target para platform
+          platform: android64
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -23,8 +23,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    # PULO DO GATO: Instala a CLI e o SDK do Geode antes de tentar compilar!
+    - name: Setup Geode CLI
+      uses: geode-sdk/setup-geode@main
+
+    # Agora sim, roda o build com o ambiente todo preparado!
     - name: Build Mod
       uses: geode-sdk/build-geode-mod@main  
       with:
-        # CORREÇÃO CRUCIAL: Trocado 'target:' por 'platform:' para bater com a nova CLI do Geode!
         platform: ${{ matrix.config.platform }}
