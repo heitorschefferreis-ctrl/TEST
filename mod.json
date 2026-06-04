@@ -1,5 +1,5 @@
 {
-  "geode": "3.3.0",
+  "geode": "5.7.1",
   "id": "ai_designer.omnipathfinder",
   "version": "1.0.0",
   "name": "OmniPathfinder AI",
@@ -20,9 +20,9 @@
     },
     "lookahead-distance": {
       "type": "float",
-      "default": 180,
-      "min": 100,
-      "max": 400,
+      "default": 180.0,
+      "min": 100.0,
+      "max": 400.0,
       "name": "Detection Lookahead (Units)",
       "description": "Sensing radius offset where obstacles trigger autopilot reaction patterns."
     }
