@@ -9,7 +9,7 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
-          target: Win       # CORREÇÃO: Adicionado o target correto para o Windows!
+          target: Win       # Mantém o target do Windows corrigido!
         - name: Android32
           os: ubuntu-latest
           target: Android32
@@ -24,6 +24,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build Mod
-      uses: geode-sdk/build-geode-mod@v2  # RECOMENDAÇÃO: Mudado de @main para @v2 para estabilidade
+      # FIX: Voltamos para a @main que é a oficial documentada no repositório do Geode
+      uses: geode-sdk/build-geode-mod@main  
       with:
         target: ${{ matrix.config.target }}
