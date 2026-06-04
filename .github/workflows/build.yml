@@ -23,11 +23,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # PULO DO GATO: Instala a CLI e o SDK do Geode antes de tentar compilar!
+    # CORREÇÃO DEFINITIVA: O nome real do repositório deles tem o "-cli" no final!
     - name: Setup Geode CLI
-      uses: geode-sdk/setup-geode@main
+      uses: geode-sdk/setup-geode-cli@main
 
-    # Agora sim, roda o build com o ambiente todo preparado!
+    # Agora o ambiente vai ter o CLI e o CMake vai achar tudo!
     - name: Build Mod
       uses: geode-sdk/build-geode-mod@main  
       with:
