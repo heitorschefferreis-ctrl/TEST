@@ -1,0 +1,30 @@
+{
+  "geode": "3.3.0",
+  "id": "ai_designer.omnipathfinder",
+  "version": "1.0.0",
+  "name": "OmniPathfinder AI",
+  "developer": "SystemsSpecialist",
+  "description": "An autonomous AI pathfinder for Geometry Dash 2.2 that dynamically analyzes level geometry, hazards, orbs, and gamemodes to pilot your player safely in real-time.",
+  "settings": {
+    "autopilot-enabled": {
+      "type": "bool",
+      "default": true,
+      "name": "Enable Autopilot AI",
+      "description": "Enables active calculation inputs to control the player dynamically."
+    },
+    "draw-radar": {
+      "type": "bool",
+      "default": true,
+      "name": "Visual Debug Radar",
+      "description": "Enables geometric HUD drawings on the action screen representing calculations."
+    },
+    "lookahead-distance": {
+      "type": "float",
+      "default": 180,
+      "min": 100,
+      "max": 400,
+      "name": "Detection Lookahead (Units)",
+      "description": "Sensing radius offset where obstacles trigger autopilot reaction patterns."
+    }
+  }
+}
